@@ -4,6 +4,7 @@ import { LuInstagram } from "react-icons/lu";
 const Footer= () =>{
     return(
         <>
+        <div className=" bg-[#f8f9fa]">
         <div className="w-4/5 mx-auto flex flex-col lg:items-start items-center">
         <div>
             <ul className="text-center flex flex-col md:flex-row font-[iranyekanwebregular] gap-12 mt-12 font-bold">
@@ -24,6 +25,7 @@ const Footer= () =>{
             <FaLinkedin className="cursor-pointer"/>
             </div>
             <p className="mt-8 font-[YekanBakhMedium]">تمامی حقوق برای فرانت‌کست محفوظ است.</p> 
+        </div>
         </div>
         </div>
         </>
