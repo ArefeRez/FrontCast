@@ -33,7 +33,7 @@ const Header = () => {
           >
             <RxHamburgerMenu className="pl-2 pr-2 rounded-[5px] font-bold text-4xl w-11  border-1 border-[#0000008c]" />
           </div>
-          <div className=" hidden lg:block text-2xl bg-[#c7d8e9] w-20  p-2 items-center rounded-4xl">
+          <div className=" hidden lg:block text-2xl bg-[#c7d8e9] w-20  p-2 rounded-4xl">
             <button className="ml-3" ><IoSunnyOutline /></button>
             <button ><IoMoonOutline /></button>
           </div>
