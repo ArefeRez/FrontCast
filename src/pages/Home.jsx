@@ -19,7 +19,10 @@ import Posts from "../components/Posts";
 import img11 from "/src/assets/img11.png";
 import img12 from "/src/assets/img12.png";
 import img13 from "/src/assets/img13.png";
+import { useContext } from "react";
+import { themeContext } from "../Contexts/ThemeContext";
 const Home = () => {
+  const {isDark}=useContext(themeContext)
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
@@ -83,13 +86,13 @@ const Home = () => {
   ];
   return (
     <>
-      <div className="flex w-4/5 mx-auto gap-5">
-        <div className="">
-          <p className="font-[YekanBakhBold] text-[#212121] text-4xl mb-12">
+      <div className="flex w-4/5 mx-auto gap-5 ">
+        <div className="mt-10">
+          <p className={`${isDark ? 'text-[#e0e0e0]':'text-[#212121]' } font-[YekanBakhBold] text-4xl mb-12`} >
             برنامه نویسی به زبان ساده.
           </p>
 
-          <p className="text-[#424242] font-[iranyekanwebregular] text-[1rem] w-[80%]">
+          <p className={`${isDark ? "text-[#9ca3af]" : "text-[#424242]"} font-[iranyekanwebregular] text-[1rem] w-[80%]`}>
             در فرانت کست می‌توانید مهارت‌های برنامه نویسی خود را تقویت کنید و به
             یک توسعه‌دهنده حرفه‌ای تبدیل شوید.
           </p>
@@ -99,28 +102,28 @@ const Home = () => {
           <ul className=" grid-cols-2	md:grid-cols-3 grid w-[100%] text-[17px] gap-4 text-[#0d47a1] font-[YekanBakhHeavy] font-bold">
             <div className="items-center flex">
               <SlNote className="text-[20px]" />
-              <li className="mr-2 text-[#212121]">یادگیری با انجام تمرین</li>
+              <li className={`${isDark ? "text-[#e0e0e0]" : "text-[#212121]"} mr-2 `}>یادگیری با انجام تمرین</li>
             </div>
             <div className="items-center flex">
               <IoTimeOutline className="text-[20px]" />
-              <li className="mr-2 text-[#212121]">ویدیوهای کوتاه و با کیفیت</li>
+              <li className={`${isDark ? "text-[#e0e0e0]" : "text-[#212121]"} mr-2 `}>ویدیوهای کوتاه و با کیفیت</li>
             </div>
             <div className="items-center flex">
               <BsWallet2 className="text-[20px]" />
-              <li className="mr-2 text-[#212121]">ضمانت بازگشت وجه</li>
+              <li className={`${isDark ? "text-[#e0e0e0]" : "text-[#212121]"} mr-2 `}>ضمانت بازگشت وجه</li>
             </div>
             <div className="items-center flex">
               <CiVideoOn className="text-[20px]" />
-              <li className="mr-2 text-[#212121]">به روز رسانی رایگان</li>
+              <li className={`${isDark ? "text-[#e0e0e0]" : "text-[#212121]"} mr-2 `}>به روز رسانی رایگان</li>
             </div>
             <div className="items-center flex">
               {" "}
               <TbListCheck className="text-[20px]" />
-              <li className="mr-2 text-[#212121]">سرفصل‌های جامع و دقیق</li>
+              <li className={`${isDark ? "text-[#e0e0e0]" : "text-[#212121]"} mr-2 `}>سرفصل‌های جامع و دقیق</li>
             </div>
             <div className="items-center flex">
               <IoChatbubbleEllipsesOutline className="text-[20px]" />
-              <li className="mr-2 text-[#212121]">پشتیبانی دوره‌ها</li>
+              <li className={`${isDark ? "text-[#e0e0e0]" : "text-[#212121]"} mr-2 `}>پشتیبانی دوره‌ها</li>
             </div>
           </ul>
         </div>
@@ -130,7 +133,7 @@ const Home = () => {
         </div>
       </div>
       <div className=" w-4/5 mx-auto gap-5 mt-40">
-        <p className="font-[YekanBakhBold] text-[#212121] text-4xl mb-20">
+        <p className={`${isDark ? 'text-[#e0e0e0]':'text-[#212121]' } font-[YekanBakhBold] text-4xl mb-20`}>
           دوره‌های آموزشی
         </p>
       </div>
@@ -148,7 +151,7 @@ const Home = () => {
         <Link to={"/course"}>مشاهده همه دوره‌های آموزشی</Link>{" "}
       </button>
       <div className=" w-4/5 mx-auto gap-5 mt-40">
-        <p className="font-[YekanBakhBold] text-[#212121] font-bold text-[2rem] mb-20">
+        <p className={`${isDark ? 'text-[#e0e0e0]':'text-[#212121]' } font-[YekanBakhBold] text-4xl mb-20`}>
           از زبان دانشجویان فرانت کست
         </p>
       </div>
@@ -162,10 +165,10 @@ const Home = () => {
         ))}
       </div>
       <div className=" w-4/5 mx-auto gap-5 mt-40">
-        <p className="font-[YekanBakhBold] text-[#212121] font-bold text-[2.1rem] mb-4">
+        <p className={`${isDark ? 'text-[#e0e0e0]':'text-[#212121]' } font-[YekanBakhBold] text-4xl mb-20`}>
           پست‌های فرانت کست
         </p>
-        <p className="flex mr-4 mb-20 text-[#212121] font-[iranyekanwebregular]">
+        <p className={`${isDark ? "text-[#9ca3af]" : "text-[#212121]"} flex mr-4 mb-20  font-[iranyekanwebregular]`}>
           برای مشاهده پست‌های بیشتر لطفا به{" "}
           <p className="text-[#1976d2] cursor-pointer">وبلاگ مراجعه کنید </p>.
         </p>
@@ -175,7 +178,7 @@ const Home = () => {
           <Posts img={posts.img} title={posts.title}  key={posts.id || index}/>
         ))}
       </div>
-      <hr className="w-[86%] mx-auto border-t-2  border-[#eeeeee] " />
+      
 
     </>
   );

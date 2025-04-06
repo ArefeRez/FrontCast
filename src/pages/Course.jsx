@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Card from "../components/card";
 import axios from "axios";
+import { themeContext } from "../Contexts/ThemeContext";
 
 const Course= ( { img, status, title, price }) =>{
+  const {isDark} = useContext( themeContext);
     const [Course, setCourse] = useState([]);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ const Course= ( { img, status, title, price }) =>{
     return(
         <>
         <div className=" w-4/5 mx-auto gap-5 mt-40">
-        <p className="font-[YekanBakhBold] text-[#212121] text-4xl mb-20">
+        <p className={`${isDark ? 'text-[#e0e0e0]':'text-[#212121]' } font-[YekanBakhBold] text-4xl mb-20`}>
           دوره‌های آموزشی
         </p>
       </div>
