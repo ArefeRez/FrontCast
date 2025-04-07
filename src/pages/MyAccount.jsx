@@ -4,6 +4,8 @@ import { RxStarFilled } from "react-icons/rx";
 import { themeContext } from "../Contexts/ThemeContext";
 import { useForm } from "react-hook-form";
 import { CgLayoutGrid } from "react-icons/cg";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogin } from "../Redux/authSlice";
 
 const MyAccount = () => {
   const {
@@ -17,9 +19,14 @@ const MyAccount = () => {
   const loginUser = async (data) => {
     console.log(data);
     try {
-      const res = await login(data);
+     dispatch(userLogin({
+      username:data.userName,
+      password:data.password
+     }))
     } catch (error) {}
   };
+  const dispatch = useDispatch()
+  const token = useSelector((state)=> state.auth.token)
   return (
     <>
       <div className="w-3/4 mx-auto md:flex gap-7 justify-between  mb-20">

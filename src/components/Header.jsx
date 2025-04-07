@@ -4,11 +4,13 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { useContext, useState } from "react";
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import { themeContext } from "../Contexts/ThemeContext";
+import { useSelector } from "react-redux";
 const Header = () => {
   const [burgerMenu, setburgerMenu] = useState(false);
 const theme = useContext(themeContext);
 const {isDark}=useContext(themeContext)
-
+const token = useSelector((state) =>state.auth.token)
+const username = useSelector((state) =>state.auth.userName)
 
 
   return (
@@ -18,7 +20,7 @@ const {isDark}=useContext(themeContext)
           <ul className="flex gap-5 font-bold items-center font-[iranyekanwebregular] ">
             <li className="text-[#ffffff] p-2 rounded-[6px] hover:bg-[#1565c0] bg-[#1976d2] cursor-pointer transition duration-350 ">
               {" "}
-              <Link to={"/myaccount"}>حساب کاربری</Link>{" "}
+              <Link to={"/myaccount"}>{token ? "admin" : "حساب کاربری"}</Link>{" "}
             </li>
             <li className="hover:text-[#0d6efd] cursor-pointer transition duration-350">
               <Link to={"/"}>صفحه اصلی</Link>
@@ -60,9 +62,9 @@ const {isDark}=useContext(themeContext)
       >
         {burgerMenu && (
           <ul className={`${isDark ? "text-[#e0e0e0]" : "text-[#212121]"} flex flex-col gap-5 p-5 font-bold  font-[iranyekanwebregular]`}>
-            <li className="p-2 rounded-[6px] w-28 hover:bg-[#1565c0] text-[#ffffff] bg-[#1976d2] cursor-pointer transition duration-350">
+            <li className="p-2 rounded-[6px] w-28 text-center hover:bg-[#1565c0] text-[#ffffff] bg-[#1976d2] cursor-pointer transition duration-350">
               {" "}
-              <Link to={"/myaccount"}>حساب کاربری</Link>{" "}
+              <Link to={"/myaccount"}> {token ? "admin" : "حساب کاربری"}</Link>{" "}
             </li>
             <li className="hover:text-[#0d6efd] cursor-pointer transition duration-350">
               <Link to={"/"}>صفحه اصلی</Link>

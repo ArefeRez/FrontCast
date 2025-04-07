@@ -21,6 +21,7 @@ import img12 from "/src/assets/img12.png";
 import img13 from "/src/assets/img13.png";
 import { useContext } from "react";
 import { themeContext } from "../Contexts/ThemeContext";
+import { useSelector } from "react-redux";
 const Home = () => {
   const {isDark}=useContext(themeContext)
   const [cards, setCards] = useState([]);
@@ -84,6 +85,7 @@ const Home = () => {
     { id: 1, img: img12, title: "بررسی Generator در جاوااسکریپت" },
     { id: 1, img: img13, title: "پیاده‌سازی SSR در ۷ React Router" },
   ];
+
   return (
     <>
       <div className="flex w-4/5 mx-auto gap-5 ">
