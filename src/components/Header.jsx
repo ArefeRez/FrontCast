@@ -20,7 +20,7 @@ const username = useSelector((state) =>state.auth.userName)
           <ul className="flex gap-5 font-bold items-center font-[iranyekanwebregular] ">
             <li className="text-[#ffffff] p-2 rounded-[6px] hover:bg-[#1565c0] bg-[#1976d2] cursor-pointer transition duration-350 ">
               {" "}
-              <Link to={"/myaccount"}>{token ? "admin" : "حساب کاربری"}</Link>{" "}
+              <Link to={"/myaccount"}>{token ? " سلام admin" : "حساب کاربری"}</Link>{" "}
             </li>
             <li className="hover:text-[#0d6efd] cursor-pointer transition duration-350">
               <Link to={"/"}>صفحه اصلی</Link>
@@ -64,7 +64,7 @@ const username = useSelector((state) =>state.auth.userName)
           <ul className={`${isDark ? "text-[#e0e0e0]" : "text-[#212121]"} flex flex-col gap-5 p-5 font-bold  font-[iranyekanwebregular]`}>
             <li className="p-2 rounded-[6px] w-28 text-center hover:bg-[#1565c0] text-[#ffffff] bg-[#1976d2] cursor-pointer transition duration-350">
               {" "}
-              <Link to={"/myaccount"}> {token ? "admin" : "حساب کاربری"}</Link>{" "}
+              <Link to={"/myaccount"}> {token ? " سلام admin" : "حساب کاربری"}</Link>{" "}
             </li>
             <li className="hover:text-[#0d6efd] cursor-pointer transition duration-350">
               <Link to={"/"}>صفحه اصلی</Link>

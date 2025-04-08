@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Course from "./pages/Course";
 import MyAccount from "./pages/MyAccount";
 import ThemeContextComponent from "./Contexts/ThemeContext";
+import Shoppingcart from "./pages/Shoppingcart";
 function App() {
   return (
     <ThemeContextComponent>
@@ -13,7 +14,7 @@ function App() {
         <Route path="/" element={<Layout>{<Home />}</Layout>} />
         <Route path="/myAccount" element={<Layout>{<MyAccount />}</Layout>} />
         <Route path="/course" element={<Layout>{<Course />}</Layout>} />
-        <Route path="/cart" element={<Layout>cart</Layout>} />
+        <Route path="/cart" element={<Layout>{<Shoppingcart/>}</Layout>} />
       </Routes>
     </ThemeContextComponent>
   );
