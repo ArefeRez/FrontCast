@@ -2,11 +2,12 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { themeContext } from "../Contexts/ThemeContext";
+import { Link } from "react-router";
 
-const Card = ({ img, status, title, price }) => {
+const Card = ({ img, status, title, price, id }) => {
   const {isDark} = useContext(themeContext);
   return (
-    
+    <Link to={`/product/${id}`}>
       <div className={`${isDark ? "bg-[#2a2f38] shadow-lg shadow-black/30" : "bg-[#ffffff]"} w-[100%]  items-center rounded-b-[10px]`}>
         <img className="w-[100%]" src={"http://localhost:5000" + img} alt="" />
         <p className="text-[0.75rem] mr-5 mb-6 mt-5 text-[#1565c0] font-extrabold font-[iranyekanwebregular]">{status}</p>
@@ -20,6 +21,7 @@ const Card = ({ img, status, title, price }) => {
           
         </div>
       </div>
+      </Link>
   );
 };
 

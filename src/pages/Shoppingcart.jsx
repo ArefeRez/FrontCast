@@ -10,9 +10,9 @@ const Shoppingcart = () => {
             <p className={`${isDark ? 'text-[#e0e0e0]':'text-[#212121]' }  font-[YekanBakhBold] text-3xl pt-15 mb-10`}>
             سبد خرید
         </p>
-        <div className="flex gap-[40%] bg-[#ebf7fc] p-5 rounded-[8px] text-[#1565c0] font-bold font-[iranyekanwebmedium]">
+        <div className="flex flex-col md:flex-row text-center md:text-start gap-[40%] bg-[#ebf7fc] p-5 rounded-[8px] text-[#1565c0] font-bold font-[iranyekanwebmedium]">
             <p>جمع کل</p>
-            <p className="">0 تومان</p>
+            <p>0 تومان</p>
         </div>
         <button className="text-[#ffffff] bg-[#1976d2]  mt-8 p-4 rounded-[8px] font-[iranyekanwebregular] mx-auto block cursor-pointer">{token ? "اقدام به پرداخت" : "ثبت نام کنید"}  
           </button>

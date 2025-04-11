@@ -31,6 +31,7 @@ const Course= ( { img, status, title, price }) =>{
             status={card.status}
             img={card.thumbnail}
             price={card.price}
+            id={card.id}
           />
         ))}
       </div>

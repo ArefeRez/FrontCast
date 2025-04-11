@@ -146,6 +146,8 @@ const Home = () => {
             status={card.status}
             img={card.thumbnail}
             price={card.price}
+            key={card.id || index}
+            id={card.id}
           />
         ))}
       </div>
