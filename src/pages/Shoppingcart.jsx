@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { themeContext } from "../Contexts/ThemeContext";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BsTrash } from "react-icons/bs";
+import { deleteOrder } from "../Redux/orderSlice";
 
 const Shoppingcart = () => {
   const { isDark } = useContext(themeContext);
   const token = useSelector((state) => state.auth.token);
   const orders = useSelector((state) => state.orders.orders) || [];
+  const dispatch = useDispatch();
 
   const totalPrice = orders.reduce((sum, item) => {
     const total = sum + Number(item.price.replace(/,/g, "")) * item.quantity;
@@ -34,7 +36,7 @@ const Shoppingcart = () => {
               <div>{item.title}</div>
               <div>{item.quantity}</div>
               <div>{item.price}</div>
-              <BsTrash className="text-red-400" />
+              <BsTrash onClick={()=>dispatch(deleteOrder(item.id))} className="text-red-400" />
             </div>
           ))
         ) : (

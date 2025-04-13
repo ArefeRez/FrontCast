@@ -35,7 +35,7 @@ const orderSlice = createSlice({
     },
     deleteOrder: (state, action) => {
       state.orders = state.orders.filter(
-        (item) => item.id !== action.payload.id
+        (item) => item.id !== action.payload
       );
       
 
