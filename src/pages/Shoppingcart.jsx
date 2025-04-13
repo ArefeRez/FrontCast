@@ -44,13 +44,13 @@ const Shoppingcart = () => {
       <div>
         {orders.length > 0 ? (
           orders.map((item, index) => (
-            <div className={` flex justify-between mb-8 font-[iranyekanwebregular] text-[1.3rem]`}>
+            <div className={` md:flex-row flex flex-col justify-between gap-3 mb-8 font-[iranyekanwebregular] text-[1.3rem]`}>
               <div>{item.title}</div>
               <div>{item.quantity}</div>
               <div>{item.price}</div>
               <BsTrash
                 onClick={() => dispatch(deleteOrder(item.id))}
-                className="text-[#8a0000] text-3xl"
+                className="text-[#8a0000] text-[30px]"
               />
             </div>
           ))
