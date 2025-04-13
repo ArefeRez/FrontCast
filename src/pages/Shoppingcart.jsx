@@ -2,20 +2,32 @@ import React, { useContext } from "react";
 import { themeContext } from "../Contexts/ThemeContext";
 import { useDispatch, useSelector } from "react-redux";
 import { BsTrash } from "react-icons/bs";
-import { deleteOrder } from "../Redux/orderSlice";
+import { deleteOrder, ordersApi } from "../Redux/orderSlice";
+import { useNavigate } from "react-router";
 
 const Shoppingcart = () => {
   const { isDark } = useContext(themeContext);
   const token = useSelector((state) => state.auth.token);
   const orders = useSelector((state) => state.orders.orders) || [];
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const totalPrice = orders.reduce((sum, item) => {
     const total = sum + Number(item.price.replace(/,/g, "")) * item.quantity;
-    console.log(total);
-    return total
+    
+    return total;
   }, 0);
-  console.log(totalPrice.toString());
+
+  const submitOrders = async () => {
+    const res =  dispatch(ordersApi(orders));
+
+    if (ordersApi.fulfilled.match(res)) {
+        console.log("سفارش شما با موفقیت ثبت شد.");
+        alert("سفارش شما با موفقیت ثبت شد.");
+    } else {
+      alert("مشکلی در انجام ثبت سفارش به وجودآمده است.");
+    }
+  };
   return (
     <div
       className={`${
@@ -36,7 +48,10 @@ const Shoppingcart = () => {
               <div>{item.title}</div>
               <div>{item.quantity}</div>
               <div>{item.price}</div>
-              <BsTrash onClick={()=>dispatch(deleteOrder(item.id))} className="text-red-400" />
+              <BsTrash
+                onClick={() => dispatch(deleteOrder(item.id))}
+                className="text-red-400"
+              />
             </div>
           ))
         ) : (
@@ -47,7 +62,12 @@ const Shoppingcart = () => {
         <p>جمع کل</p>
         <p>{totalPrice.toLocaleString()} تومان</p>
       </div>
-      <button className="text-[#ffffff] bg-[#1976d2]  mt-8 p-4 rounded-[8px] font-[iranyekanwebregular] mx-auto block cursor-pointer">
+      <button
+        onClick={async () => {
+           token ?submitOrders():navigate('/myaccount')
+        }}
+        className="text-[#ffffff] bg-[#1976d2]  mt-8 p-4 rounded-[8px] font-[iranyekanwebregular] mx-auto block cursor-pointer"
+      >
         {token ? "اقدام به پرداخت" : "ثبت نام کنید"}
       </button>
     </div>
