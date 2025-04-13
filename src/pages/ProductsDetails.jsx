@@ -39,7 +39,7 @@ const ProductsDetails = () => {
   const dispatch = useDispatch();
   const handelOrder = (newCount) => {
     dispatch(
-      addNewOrder({ id: product.id, price: product.price, quantity: newCount })
+      addNewOrder({ id: product.id, price: product.price, quantity: newCount ,title:product.title})
     );
   };
   return (
