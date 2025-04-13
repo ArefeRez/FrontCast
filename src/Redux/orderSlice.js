@@ -22,8 +22,6 @@ const orderSlice = createSlice({
   initialState: initialState,
   reducers: {
     addNewOrder: (state, action) => {
-
-        console.log(action.payload);
       state.orders = state.orders.filter(
         (item) => item.id !== action.payload.id
       );
@@ -31,15 +29,13 @@ const orderSlice = createSlice({
       if (action.payload.quantity > 0) {
         state.orders.push(action.payload);
       }
-      console.log(state.orders);
+      localStorage.setItem("orders", JSON.stringify(state.orders));
     },
     deleteOrder: (state, action) => {
-      state.orders = state.orders.filter(
-        (item) => item.id !== action.payload
-      );
-      
+      state.orders = state.orders.filter((item) => item.id !== action.payload);
 
-      console.log(state.orders);
+      localStorage.setItem("orders", JSON.stringify(state.orders));
+      
     },
   },
   extraReducers(builder) {
@@ -56,4 +52,4 @@ const orderSlice = createSlice({
 });
 
 export default orderSlice.reducer;
-export const { deleteOrder,addNewOrder } = orderSlice.actions;
+export const { deleteOrder, addNewOrder } = orderSlice.actions;
