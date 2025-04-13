@@ -6,10 +6,11 @@ import { BsMortarboard } from "react-icons/bs";
 import { IoTimeOutline } from "react-icons/io5";
 import { FaLock, FaRegMinusSquare, FaRegPlusSquare } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
-import { useSelector } from "react-redux";
-import Accordion from "./Accordion";
+import { useDispatch, useSelector } from "react-redux";
+import Accordion from "../components/Accordion";
 import avatar from "../assets/avatar.jpg";
 import sadri from "../assets/sadri.jpeg";
+import { addNewOrder } from "../Redux/orderSlice";
 const ProductsDetails = () => {
   const token = useSelector((state) => state.auth.token);
   const [count, setCount] = useState(0);
@@ -35,6 +36,12 @@ const ProductsDetails = () => {
     fetchData();
   }, []);
 
+  const dispatch = useDispatch();
+  const handelOrder = (newCount) => {
+    dispatch(
+      addNewOrder({ id: product.id, price: product.price, quantity: newCount })
+    );
+  };
   return (
     <>
       <div
@@ -75,14 +82,27 @@ const ProductsDetails = () => {
 
           <div className="flex gap-2 text-3xl items-center">
             <CiSquarePlus
-              onClick={() => setCount(count + 1)}
+              onClick={() => {
+                setCount((prev) => {
+                  const newCount = prev + 1;
+                  handelOrder(newCount);
+                  return newCount;
+                });
+              }}
               className="cursor-pointer"
             />
 
             <p className="w-8 text-center">{count}</p>
 
             <CiSquareMinus
-              onClick={() => count > 0 && setCount(count - 1)}
+              onClick={() => {
+                count > 0 &&
+                  setCount((prev) => {
+                    const newCount = prev - 1;
+                    handelOrder(newCount);
+                    return newCount;
+                  });
+              }}
               className={`cursor-pointer transition ${
                 count === 0 ? "text-gray-400 cursor-not-allowed" : ""
               }`}
@@ -145,36 +165,66 @@ const ProductsDetails = () => {
         >
           دیدگاه‌ها:
         </p>
-        <div className={`${isDark ? "text-[#e0e0e0]" : "text-[#212121]"}  border border-[#bdbdbd] rounded-[20px] p-5`}>
+        <div
+          className={`${
+            isDark ? "text-[#e0e0e0]" : "text-[#212121]"
+          }  border border-[#bdbdbd] rounded-[20px] p-5`}
+        >
           <div className="flex items-center gap-7 mb-9">
             <img className="rounded-[50%]" src={avatar} alt="" />
-            <div >
+            <div>
               <p className="mb-4 font-[iranyekanwebmedium] font-bold">meysam</p>
-              <p className="font-[iranyekanwebregular]">آذر 19, 1403 در 10:09 ق.ظ</p>
+              <p className="font-[iranyekanwebregular]">
+                آذر 19, 1403 در 10:09 ق.ظ
+              </p>
             </div>
           </div>
           <div className="flex justify-between font-[iranyekanwebmedium]">
-            <p className="text-[1.1rem]">بسیار عالی و ممنون از حضور مستمر مهندس در عرصه آموزش.</p>
-            <button className="cursor-pointer bg-[#ebf7fc] text-[#1565c0] p-2 rounded-[5px]">برای پاسخ دادن وارد شوید</button>
+            <p className="text-[1.1rem]">
+              بسیار عالی و ممنون از حضور مستمر مهندس در عرصه آموزش.
+            </p>
+            <button className="cursor-pointer bg-[#ebf7fc] text-[#1565c0] p-2 rounded-[5px]">
+              برای پاسخ دادن وارد شوید
+            </button>
           </div>
         </div>
-        <div className={`${isDark ? "bg-[#4f555f]" : "bg-[#f8f9fa] "} border border-[#bdbdbd] rounded-[20px] pl-4 pr-4 pt-7 pb-7 mt-9 w-[90%] mr-auto`}>
-          <div className={`${isDark ? "text-[#e0e0e0] bg-[#2a2f38]" : "text-[#212121]"} border border-[#bdbdbd] rounded-[20px] p-5`}>
+        <div
+          className={`${
+            isDark ? "bg-[#4f555f]" : "bg-[#f8f9fa] "
+          } border border-[#bdbdbd] rounded-[20px] pl-4 pr-4 pt-7 pb-7 mt-9 w-[90%] mr-auto`}
+        >
+          <div
+            className={`${
+              isDark ? "text-[#e0e0e0] bg-[#2a2f38]" : "text-[#212121]"
+            } border border-[#bdbdbd] rounded-[20px] p-5`}
+          >
             <div className="flex items-center gap-7 mb-9">
-            <img className="rounded-[50%]" src={sadri} alt="" />
-            <div >
-              <p className="mb-4 font-[iranyekanwebmedium] font-bold">مسعود صدری</p>
-              <p className="font-[iranyekanwebregular]">آذر 19, 1403  در  1:48 ب.ظ</p>
+              <img className="rounded-[50%]" src={sadri} alt="" />
+              <div>
+                <p className="mb-4 font-[iranyekanwebmedium] font-bold">
+                  مسعود صدری
+                </p>
+                <p className="font-[iranyekanwebregular]">
+                  آذر 19, 1403 در 1:48 ب.ظ
+                </p>
+              </div>
             </div>
-            </div>
-            <p className="text-[1.1rem] font-[iranyekanwebmedium]">سلام
-              </p>
-              <p className="text-[1.1rem] font-[iranyekanwebmedium]">ممنونم از لطفتون.</p>
+            <p className="text-[1.1rem] font-[iranyekanwebmedium]">سلام</p>
+            <p className="text-[1.1rem] font-[iranyekanwebmedium]">
+              ممنونم از لطفتون.
+            </p>
           </div>
         </div>
-        <div className={`${isDark ? "bg-[#51555c]" : "bg-[#fafafa]"}  mt-15 rounded-[15px] pt-10 pr-12 p-17 font-[iranyekanwebregular] `}>
+        <div
+          className={`${
+            isDark ? "bg-[#51555c]" : "bg-[#fafafa]"
+          }  mt-15 rounded-[15px] pt-10 pr-12 p-17 font-[iranyekanwebregular] `}
+        >
           <p className="text-[1.3rem] mb-3">افزودن دیدگاه جدید </p>
-          <p className="flex gap-1 text-[1.1rem]">برای نوشتن دیدگاه باید  <p className="text-[#1976d2] cursor-pointer ">  وارد شوید  </p>.</p>
+          <p className="flex gap-1 text-[1.1rem]">
+            برای نوشتن دیدگاه باید{" "}
+            <p className="text-[#1976d2] cursor-pointer "> وارد شوید </p>.
+          </p>
         </div>
       </div>
     </>

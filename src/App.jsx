@@ -7,7 +7,7 @@ import Course from "./pages/Course";
 import MyAccount from "./pages/MyAccount";
 import ThemeContextComponent from "./Contexts/ThemeContext";
 import Shoppingcart from "./pages/Shoppingcart";
-import ProductsDetails from "./components/ProductsDetails";
+import ProductsDetails from "./pages/ProductsDetails";
 
 function App() {
   return (
