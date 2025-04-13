@@ -13,10 +13,9 @@ import sadri from "../assets/sadri.jpeg";
 import { addNewOrder } from "../Redux/orderSlice";
 const ProductsDetails = () => {
   const token = useSelector((state) => state.auth.token);
-  const [count, setCount] = useState(0);
-  const min = () => {
-    if (count > 0) setCount(count - 1);
-  };
+
+  const orders = useSelector((state) => state.orders.orders) || [];
+
   const params = useParams();
   const [product, setProduct] = useState();
   const { isDark } = useContext(themeContext);
@@ -34,12 +33,24 @@ const ProductsDetails = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+    const order = orders.find((item) => item.id == params.id);
+    if (order) {
+      setCount(order.quantity);
+    }
+    console.log(order);
+  }, [orders, params.id]);
+  const [count, setCount] = useState(0);
+
 
   const dispatch = useDispatch();
   const handelOrder = (newCount) => {
     dispatch(
-      addNewOrder({ id: product.id, price: product.price, quantity: newCount ,title:product.title})
+      addNewOrder({
+        id: product.id,
+        price: product.price,
+        quantity: newCount,
+        title: product.title,
+      })
     );
   };
   return (
