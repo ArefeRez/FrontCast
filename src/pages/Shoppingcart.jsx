@@ -44,21 +44,21 @@ const Shoppingcart = () => {
       <div>
         {orders.length > 0 ? (
           orders.map((item, index) => (
-            <div className={` flex justify-between`}>
+            <div className={` flex justify-between mb-8 font-[iranyekanwebregular] text-[1.3rem]`}>
               <div>{item.title}</div>
               <div>{item.quantity}</div>
               <div>{item.price}</div>
               <BsTrash
                 onClick={() => dispatch(deleteOrder(item.id))}
-                className="text-red-400"
+                className="text-[#8a0000] text-3xl"
               />
             </div>
           ))
         ) : (
-          <div>empty</div>
+          <div className=" text-[#9ca3af] flex justify-center mb-12 font-[iranyekanwebregular]  font-bold text-2xl">سبد خرید شما خالی است.</div>
         )}
       </div>
-      <div className="flex flex-col md:flex-row text-center md:text-start gap-[40%] bg-[#ebf7fc] p-5 rounded-[8px] text-[#1565c0] font-bold font-[iranyekanwebmedium]">
+      <div className={`${isDark ? "bg-[#343a44]" : "bg-[#ebf7fc]"} flex flex-col md:flex-row text-center md:text-start gap-[40%]  p-5 rounded-[8px] text-[#1565c0] font-bold font-[iranyekanwebmedium]`}>
         <p>جمع کل</p>
         <p>{totalPrice.toLocaleString()} تومان</p>
       </div>
